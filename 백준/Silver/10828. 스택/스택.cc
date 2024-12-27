@@ -2,6 +2,22 @@
 
 using namespace std;
 
+const int MX = 10005;
+int dat[MX];
+int pos = 0;
+
+void push (int x) {
+    dat[pos] = x;
+    pos ++;
+}
+
+void pop (){
+    pos--;
+}
+
+int top() {
+    return dat[pos - 1];
+}
 
 int main()
 {
@@ -10,29 +26,28 @@ int main()
 
     int N;
     cin >> N;
-    stack<int> S;
     for (int i = 0; i < N; i++){
         string A;
         cin >> A;
         if (A == "push"){
             int k;
             cin >> k;
-            S.push(k);
+            push(k);
         }
         else if (A == "pop"){
-            if (S.size() != 0) {
-                cout << S.top() << "\n";
-                S.pop();
+            if (pos != 0) {
+                cout << top() << "\n";
+                pop();
             }
             else {
                 cout << -1 << "\n";
             }
         }
         else if (A == "size"){
-            cout << S.size() << "\n";
+            cout << pos << "\n";
         }
         else if (A == "empty"){
-            if (S.empty()) {
+            if (pos == 0) {
                 cout << 1 << "\n";
             }
             else {
@@ -40,8 +55,8 @@ int main()
             }
         }
         else {
-            if (S.size() != 0){
-                cout << S.top() << "\n";
+            if (pos != 0){
+                cout << top() << "\n";
             }
             else {
                 cout << -1 << "\n";
