@@ -6,24 +6,23 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    
+    int num[10] = {0};
 
-    int freq[10] = {};
-    int a, b, c, sum;
+    int a, b, c;
     cin >> a >> b >> c;
-    sum = a*b*c;
-
-    string str = to_string(sum);
-
-    for (int i = 0; i < str.length(); i++)
-    {
-        for(int k = 0; k < 10; k++)
-        {
-            if (str[i] == '0'+k)
-                freq[k]++;
-        }
+    int k;
+    for (int i = 0; i < 3; i ++) {
+        k = a * b * c;
     }
 
-    for (int i = 0; i < 10; i++)
-        cout << freq[i] << "\n";
+    while (k != 0) {
+        num[k%10] ++;
+        k = k / 10;
+    }
+
+    for (int i = 0; i < 10; i ++) {
+        cout << num[i] << '\n';
+    }
 
 }
